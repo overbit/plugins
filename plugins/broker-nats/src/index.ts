@@ -82,6 +82,8 @@ class NatsPlugin implements AmplicationPlugin {
       },
     };
     eventParams.updateProperties.push(newParams);
+
+    console.log();
     return eventParams;
   }
 
