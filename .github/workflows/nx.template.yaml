@@ -55,6 +55,7 @@ jobs:
         with:
           files_ignore: package-lock.json
           base_sha: ${{ steps.setSHAs.outputs.base }}
+          separator: ","
 
       - name: Evaluate affected projects
         id: calculate-affected

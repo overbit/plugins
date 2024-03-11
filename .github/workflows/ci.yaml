@@ -44,6 +44,7 @@ jobs:
         with:
           files_ignore: package-lock.json
           base_sha: ${{ steps.setSHAs.outputs.base }}
+          separator: ','
 
       - name: Lint
         run: npx nx affected --target=lint --parallel --files=${{ steps.files.outputs.all_changed_files }}
