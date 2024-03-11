@@ -17,3 +17,6 @@ export * from "./events/create-server";
 export * from "./core";
 
 export { AuthCorePlugin } from "./auth-core-plugin";
+
+
+console.log("HI")
