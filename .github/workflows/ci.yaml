@@ -40,16 +40,18 @@ jobs:
 
       - name: Get changed files
         id: files
-        uses: jitterbit/get-changed-files@v1
+        uses: tj-actions/changed-files@v42
+        with:
+          files_ignore: package-lock.json
 
       - name: Lint
-        run: npx nx affected --target=lint --parallel --files=${{ steps.files.outputs.all }}
+        run: npx nx affected --target=lint --parallel --files=${{ steps.files.outputs.all_changed_files }}
 
       - name: Build
-        run: npx nx affected --target=build --parallel --files=${{ steps.files.outputs.all }}
+        run: npx nx affected --target=build --parallel --files=${{ steps.files.outputs.all_changed_files }}
 
       - name: Test
-        run: npx nx affected --target=test --parallel --files=${{ steps.files.outputs.all }}
+        run: npx nx affected --target=test --parallel --files=${{ steps.files.outputs.all_changed_files }}
 
   nx:
     name: Nx
