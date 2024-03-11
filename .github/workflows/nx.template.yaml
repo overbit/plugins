@@ -49,8 +49,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Get changed files 
+        id: files
+        uses: jitterbit/get-changed-files@v1
+
       - name: Evaluate affected projects
         id: calculate-affected
         run: |
-          echo affected-plugins=$(npx nx show projects --affected --with-target npm:publish --json) >> $GITHUB_OUTPUT
+          echo affected-plugins=$(npx nx show projects --affected --with-target npm:publish --json --files=${{ steps.files.outputs.all }}) >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT | grep affected
