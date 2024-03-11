@@ -49,11 +49,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Get changed files 
+      - name: Get changed files
         id: files
         uses: tj-actions/changed-files@v42
-        with: 
+        with:
           files_ignore: package-lock.json
+          base_sha: ${{ steps.setSHAs.outputs.base }}
+          separator: ","
 
       - name: Evaluate affected projects
         id: calculate-affected
